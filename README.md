@@ -1,8 +1,18 @@
-# Quote-Equity-tcs
-Quote-Equity-TCS-EQ-22-06-2024-to-22-07-2024
-1.Initially, I imported the dataset into my project
-2.Next, I carefully identified the dependent and independent variables within the dataset.
-3.I decided to delete the "series" column because it contained the same value throughout, rendering it redundant and unnecessary for analysis.
-4.I then set the index of the dataset using the "data" column to ensure proper alignment and referencing of records.
-5.Afterward, I removed all commas from the dataset to eliminate any potential formatting issues or errors in data processing.
-6.Finally, I thoroughly cleaned the dataset to ensure it was ready for further analysis and modeling.
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv("/content/Quote-Equity-TCS-EQ-22-06-2024-to-22-07-2024.csv")
+
+# Drop the 'series' column
+df.drop('series', axis=1, inplace=True)
+
+# Set the 'Date' column as the index
+df.set_index('Date', inplace=True)
+
+# Remove commas from the entire DataFrame
+df = df.replace(',', '', regex=True)
+
+
+Explanation:
+Removing Commas: The line df.replace(',', '', regex=True) replaces all commas in the DataFrame with an empty string, effectively removing them. This is applied to the entire DataFrame.
+This will clean up your dataset by ensuring there are no commas, which might otherwise cause issues in numerical data.
